@@ -3,14 +3,14 @@
 window.addEventListener('load', function() {
     console.log('loaded');
 
-    // typeof(document.getElementById('spaceShuttleHeight').innerHTML) = Number;
+    // let height = document.getElementById('spaceShuttleHeight').innerHTML;
 
     takeoff.addEventListener('click', function() {
        let response =  window.confirm('Confirm that the shuttle is ready for takeoff.');
        if (response) {
            flightStatus.innerHTML = 'Shuttle in flight.';
            shuttleBackground.style.background = 'blue';
-           document.getElementById('spaceShuttleHeight').innerHTML += '10000';
+        document.getElementById('spaceShuttleHeight').innerHTML = parseInt(document.getElementById('spaceShuttleHeight').innerHTML) + 10000;
        };
     });
 
@@ -34,6 +34,12 @@ let rocket = document.getElementById('rocket');
 
 
     upButton.addEventListener('click', function() {
-        rocket.style.top += '10px';
-    })
+        document.getElementById('rocket').style.top += '10px';
+        document.getElementById('spaceShuttleHeight').innerHTML = parseInt(document.getElementById('spaceShuttleHeight').innerHTML) + 10000;
+    });
+
+    downButton.addEventListener('click', function() {
+        document.getElementById('rocket').style.top -= '10px';
+        document.getElementById('spaceShuttleHeight').innerHTML = parseInt(document.getElementById('spaceShuttleHeight').innerHTML) - 10000;
+    });
 })
